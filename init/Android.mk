@@ -1,0 +1,33 @@
+#
+# Copyright (C) 2012 The Android Open Source Project 
+#
+# From Manish_4586 (C) 2018 (manish.n.manish45@gmail.com)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := system/core/init
+LOCAL_CFLAGS := -Wall -DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"
+
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 23; echo $$?),0)
+    LOCAL_CFLAGS += -DGETPROP_RETURNS_STRING
+endif
+
+LOCAL_SRC_FILES := init_a56dj.cpp
+LOCAL_MODULE := libinit_a56dj
+
+include $(BUILD_STATIC_LIBRARY)
