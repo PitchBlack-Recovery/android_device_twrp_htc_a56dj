@@ -20,6 +20,8 @@
 # definition file).
 #
 
+LOCAL_PATH := device/htc/a56dj
+
 BOARD_VENDOR := htc
 
 # Bootloader
@@ -42,7 +44,8 @@ TARGET_CPU_VARIANT := cortex-a7
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=23 ehci-hcd.park=3 androidkey.dummy=1 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --dt device/htc/a56dj/dt.img --tags_offset 0x01e00000 --board recovery:0
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --dt $(LOCAL_PATH)/dt.img --tags_offset 0x01e00000 --board recovery:0
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/recovery/kernel
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -59,12 +62,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_USES_MMCUTILS := true
-TARGET_PREBUILT_KERNEL := device/htc/a56dj/kernel
 TARGET_RECOVERY_DEVICE_MODULES := chargeled # strace twrpdec
 #TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(OUT)/utilities/strace $(OUT)/recovery/root/sbin/twrpdec
 #TARGET_USES_LOGD := true
-
-# TWRP Build Flags
 COMMON_GLOBAL_CPPFLAGS += -DBOARD_RECOVERY_BLDRMSG_OFFSET=2048
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_THEME := portrait_hdpi
@@ -79,3 +79,7 @@ TW_NO_EXFAT_FUSE := true
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_a56dj
+
+#Official
+PB_OFFICIAL := true
+
