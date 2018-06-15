@@ -80,6 +80,12 @@ TW_NO_EXFAT_FUSE := true
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_a56dj
 
+# exFAT FS Support
+TW_INCLUDE_FUSE_EXFAT := true
+
+# NTFS Support
+TW_INCLUDE_FUSE_NTFS := true
+
 #Official
 PB_OFFICIAL := true
 
