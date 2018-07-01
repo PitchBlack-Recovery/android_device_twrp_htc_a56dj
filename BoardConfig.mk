@@ -45,7 +45,7 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --dt $(LOCAL_PATH)/dt.img --tags_offset 0x01e00000 --board recovery:0
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/recovery/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
